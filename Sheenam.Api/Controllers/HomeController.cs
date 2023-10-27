@@ -12,7 +12,7 @@ namespace Sheenam.Api.Controllers
     {
         [HttpGet]
         public ActionResult<string> Get() => 
-            Ok("Hello, World; This is me dilmurod");
+            Ok("Hello, World!. This is me dilmurod");
 
     }
 }
