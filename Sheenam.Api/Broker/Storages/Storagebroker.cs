@@ -1,17 +1,22 @@
-﻿using EFxceptions;
+﻿/*
+Copyright (c) is allowed for only 
+education reasons. Author : DimaDev.
+*/
+
+using EFxceptions;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
 namespace Sheenam.Api.Broker.Storages
 {
-    public class Storagebroker : EFxceptionsContext
+    public partial class StorageBroker : EFxceptionsContext
     {
         private readonly IConfiguration configuration;
 
-        public Storagebroker(IConfiguration configuration)
+        public StorageBroker(IConfiguration configuration)
         {
             this.configuration = configuration;
-            this.Database.Migrate();
+            Database.Migrate();
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

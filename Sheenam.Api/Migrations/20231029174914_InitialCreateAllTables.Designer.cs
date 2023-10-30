@@ -10,7 +10,7 @@ using Sheenam.Api.Broker.Storages;
 
 namespace Sheenam.Api.Migrations
 {
-    [DbContext(typeof(Storagebroker))]
+    [DbContext(typeof(StorageBroker))]
     [Migration("20231029174914_InitialCreateAllTables")]
     partial class InitialCreateAllTables
     {

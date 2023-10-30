@@ -29,7 +29,7 @@ namespace Sheenam.Api
             };
 
 
-            services.AddDbContext<Storagebroker>();
+            services.AddDbContext<StorageBroker>();
             services.AddControllers();
 
             services.AddSwaggerGen(options =>
