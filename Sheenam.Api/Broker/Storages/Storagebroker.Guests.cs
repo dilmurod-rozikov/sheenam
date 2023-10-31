@@ -2,7 +2,6 @@
 Copyright (c) is allowed for only 
 education reasons. Author : DimaDev.
 */
-
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Sheenam.Api.Models.Foundations.Guests;
