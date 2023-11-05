@@ -15,9 +15,8 @@ namespace Sheenam.Api.Services.Foundations.Guests
         public GuestService(IStorageBroker storageBroker) =>
             this.storageBroker = storageBroker;
         
-        public async ValueTask<Guest> AddGuestAsync(Guest guest)
-        {
-             return await this.storageBroker.InsertGuestAsync(guest);
-        }
+        public async ValueTask<Guest> AddGuestAsync(Guest guest) =>
+              await this.storageBroker.InsertGuestAsync(guest);
+        
     }
 }

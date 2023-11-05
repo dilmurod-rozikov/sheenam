@@ -14,11 +14,6 @@ namespace Sheenam.Api.Tests.Unit.Service.Foundations.Guests
 {
     public partial class GuestServiceTests
     {
-        public GuestServiceTests(Mock<IStorageBroker> storageBrokerMock, IGuestService guestService)
-        {
-            this.storageBrokerMock = storageBrokerMock;
-            this.guestService = guestService;
-        }
 
         [Fact]
         public async Task ShouldAddGuestAsync()
@@ -26,12 +21,12 @@ namespace Sheenam.Api.Tests.Unit.Service.Foundations.Guests
             //given
             Guest randomGuest = CreateRandomGuest();
             Guest inputGuest = randomGuest;
-            Guest storageGuest = inputGuest;
-            Guest expectedGuest = storageGuest.DeepClone();
+            Guest returningGuest = inputGuest;
+            Guest expectedGuest = returningGuest.DeepClone();
 
             this.storageBrokerMock.Setup(broker =>
                 broker.InsertGuestAsync(inputGuest))
-                .ReturnsAsync(storageGuest);
+                .ReturnsAsync(returningGuest);
             //when
             Guest actualGuest =
                 await this.guestService.AddGuestAsync(inputGuest);
