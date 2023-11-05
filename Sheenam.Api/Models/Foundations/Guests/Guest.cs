@@ -8,7 +8,7 @@ namespace Sheenam.Api.Models.Foundations.Guests
 {
     public class Guest
     {
-        public Guid MyProperty { get; set; }
+        public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public DateTimeOffset DateOfBirth { get; set; }
