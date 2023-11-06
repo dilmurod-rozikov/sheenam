@@ -2,11 +2,11 @@
 Copyright (c) is allowed for only 
 education reasons. Author : DimaDev.
 */
-using FluentAssertions;
 using Moq;
 using Sheenam.Api.Broker.Storages;
 using Sheenam.Api.Models.Foundations.Guests;
 using Sheenam.Api.Services.Foundations.Guests;
+using Tynamix.ObjectFiller;
 using Xunit;
 
 namespace Sheenam.Api.Tests.Unit.Service.Foundations.Guests
@@ -19,36 +19,26 @@ namespace Sheenam.Api.Tests.Unit.Service.Foundations.Guests
         {
             this.storageBrokerMock = new Mock<IStorageBroker>();
 
-            this.guestService = 
+            this.guestService =
                 new GuestService(storageBroker: this.storageBrokerMock.Object);
         }
+
         [Fact]
-        public async Task CreateRandomGuest()
+        private static Guest CreateRandomGuest()
         {
+            return CreateGuestFiller(date: GetRandomDateTimeOffset()).Create();
+        }
 
-            //Arrange
-            Guest randomGuest = new Guest
-            {
-                Id = Guid.NewGuid(),
-                FirstName = "Dilmurod",
-                LastName = "Kahramonov",
-                Email = "something@gmail.com",
-                Address = "Somewhere in the middle of nowhere",
-                PhoneNumber = "bla bla bla",
-                DateOfBirth = new DateTimeOffset(),
-                Gender = GenderType.Male
-            };
+        private static DateTimeOffset GetRandomDateTimeOffset()
+        {
+            return new DateTimeRange(earliestDate: new DateTime()).GetValue();
+        }
 
-            this.storageBrokerMock.Setup(broker =>
-                broker.InsertGuestAsync(randomGuest))
-                    .ReturnsAsync(randomGuest);
-
-            //Act
-            Guest actual = await this.guestService.AddGuestAsync(randomGuest);
-
-            //Assert
-             actual.Should().BeEquivalentTo(randomGuest);
-
+        private static Filler<Guest> CreateGuestFiller(DateTimeOffset date)
+        {
+            var filler = new Filler<Guest>();
+            filler.Setup().OnType<DateTimeOffset>().Use(date);
+            return filler;
         }
     }
 }
