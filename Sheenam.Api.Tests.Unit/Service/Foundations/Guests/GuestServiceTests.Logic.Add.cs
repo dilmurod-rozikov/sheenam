@@ -7,42 +7,12 @@ using Xunit;
 namespace Sheenam.Api.Tests.Unit.Service.Foundations.Guests
 {
     public partial class GuestServiceTests
-    {
-       /* [Fact]
-        public async Task ShouldAddGuestAsyncInWrongWayAsync()
-        {
-            //Arrange
-            Guest randomGuest = new Guest()
-            {
-                FirstName = "Dilmurod",
-                LastName = "Rozikov",
-                Email = "dasda@gmail.com",
-                Address = "Tashkent, Mirzo Ulugbek",
-                DateOfBirth = new DateTimeOffset(),
-                Gender = GenderType.Male,
-                PhoneNumber = "231231231",
-                Id = Guid.NewGuid()
-
-            };
-
-            this.storageBrokerMock.Setup(broker =>
-                broker.InsertGuestAsync(randomGuest))
-                .ReturnsAsync(randomGuest);
-            //Act
-            Guest actual =
-                await this.guestService.AddGuestAsync(randomGuest);
-
-            //Assert
-            actual.Should().BeEquivalentTo(randomGuest);
-
-        }
-
-       */ 
+    { 
         [Fact]
         public async Task ShouldAddGuestAsync()
         {
             //given
-            Guest randomGuest = CreateRandomGuest();
+            Guest randomGuest = CreateRandomGuests();
             Guest inputGuest = randomGuest;
             Guest returningGuest = inputGuest;
             Guest expectedGuest = returningGuest.DeepClone();
