@@ -23,8 +23,7 @@ namespace Sheenam.Api.Tests.Unit.Service.Foundations.Guests
                 new GuestService(storageBroker: this.storageBrokerMock.Object);
         }
 
-        [Fact]
-        private static Guest CreateRandomGuest()
+        private static Guest CreateRandomGuests()
         {
             return CreateGuestFiller(date: GetRandomDateTimeOffset()).Create();
         }

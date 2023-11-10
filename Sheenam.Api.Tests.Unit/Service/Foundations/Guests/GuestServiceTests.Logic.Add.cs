@@ -42,7 +42,7 @@ namespace Sheenam.Api.Tests.Unit.Service.Foundations.Guests
         public async Task ShouldAddGuestAsync()
         {
             //given
-            Guest randomGuest = CreateRandomGuest();
+            Guest randomGuest = CreateRandomGuests();
             Guest inputGuest = randomGuest;
             Guest returningGuest = inputGuest;
             Guest expectedGuest = returningGuest.DeepClone();
